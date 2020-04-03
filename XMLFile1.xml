@@ -1,0 +1,2731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsAPRemit">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=10.7.0.11;Initial Catalog=ERP10MOFKLUAT</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>e404d6c2-fa9d-44cc-9a79-7af36b2b9df7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="CheckHed">
+      <Query>
+        <DataSourceName>dsAPRemit</DataSourceName>
+        <CommandText>
+          ="SELECT T1.CheckingAccount_c,T1.Calc_CurncyModule,T1.Calc_DspAccountRef,T1.Calc_DspCheckDate,T1.Calc_DspCheckNum
+          ,T1.Calc_DspDocCheckAmt,T1.Calc_DspVendorAddr,T1.Calc_DspVendorBankAcctNumber,T1.Calc_DspVendorBankAddr
+          ,T1.Calc_DspVendorBankName,T1.CurrencyCode_CurrDesc,T1.CurrencyCode_CurrSymbol,T1.VendorNum_EMailAddress
+          ,T1.VendorNum_FaxNum,T1.HeadNum,T1.ManualPrint, T2.[Description], T2.DocDiscAmt,T2.DocTranAmt
+          ,T2.InvoiceNum,T2.Calc_DspNetAmt,T2.Calc_DspInvoiceDate
+          ,T3.RptLanguageID
+          ,T3.Description AS RptLiteralsDescription
+          ,T3.DiscAmt AS RptLiteralsDiscAmt
+          ,T3.DocTranAmt AS RptLiteralsDocTranAmt
+          ,T3.FaxNum AS RptLiteralsFaxNum
+          ,T3.InvoiceNum AS RptLiteralsInvoiceNum
+          ,T3.PhoneNum AS RptLiteralsPhoneNum
+          ,T3.RptLiteralsLBank
+          ,T3.RptLiteralsLDate
+          ,T3.RptLiteralsLDate1
+          ,T3.RptLiteralsLEmail
+          ,T3.RptLiteralsLFax
+          ,T3.RptLiteralsLNetAmount
+          ,T3.RptLiteralsLNo
+          ,T3.RptLiteralsLPayment
+          ,T3.RptLiteralsLSupplier
+          ,T3.RptLiteralsRptTitleRemit
+          ,T3.VendorBankAcctNumber AS RptLiteralsVendorBankAcctNumber
+          ,T3.RptLiteralsPage
+          ,T4.LegalNumber
+          FROM CheckHed_" + Parameters!TableGuid.Value + " T1
+          LEFT OUTER JOIN ApTran_" + Parameters!TableGuid.Value + " T2
+          ON T1.Company = T2.Company AND T1.HeadNum = T2.HeadNum
+          LEFT OUTER JOIN RptLabels_" + Parameters!TableGuid.Value + " T3
+          ON T1.RptLanguageID = T3.RptLanguageID
+          INNER JOIN [ERP10MOFKLUAT].[DBO].ApInvHed T4
+          ON  T4.InvoiceNum= T2.InvoiceNum AND T4.Company !=000"
+        </CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Calc_CurncyModule">
+          <DataField>Calc_CurncyModule</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspAccountRef">
+          <DataField>Calc_DspAccountRef</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspCheckDate">
+          <DataField>Calc_DspCheckDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspCheckNum">
+          <DataField>Calc_DspCheckNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspDocCheckAmt">
+          <DataField>Calc_DspDocCheckAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspVendorAddr">
+          <DataField>Calc_DspVendorAddr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspVendorBankAcctNumber">
+          <DataField>Calc_DspVendorBankAcctNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspVendorBankAddr">
+          <DataField>Calc_DspVendorBankAddr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspVendorBankName">
+          <DataField>Calc_DspVendorBankName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrencyCode_CurrDesc">
+          <DataField>CurrencyCode_CurrDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrencyCode_CurrSymbol">
+          <DataField>CurrencyCode_CurrSymbol</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendorNum_EMailAddress">
+          <DataField>VendorNum_EMailAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendorNum_FaxNum">
+          <DataField>VendorNum_FaxNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HeadNum">
+          <DataField>HeadNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ManualPrint">
+          <DataField>ManualPrint</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocDiscAmt">
+          <DataField>DocDiscAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DocTranAmt">
+          <DataField>DocTranAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceNum">
+          <DataField>InvoiceNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspNetAmt">
+          <DataField>Calc_DspNetAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DspInvoiceDate">
+          <DataField>Calc_DspInvoiceDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RptLanguageID">
+          <DataField>RptLanguageID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsDescription">
+          <DataField>RptLiteralsDescription</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsDiscAmt">
+          <DataField>RptLiteralsDiscAmt</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsDocTranAmt">
+          <DataField>RptLiteralsDocTranAmt</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsFaxNum">
+          <DataField>RptLiteralsFaxNum</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsInvoiceNum">
+          <DataField>RptLiteralsInvoiceNum</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsPhoneNum">
+          <DataField>RptLiteralsPhoneNum</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLBank">
+          <DataField>RptLiteralsLBank</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLDate">
+          <DataField>RptLiteralsLDate</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLDate1">
+          <DataField>RptLiteralsLDate1</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLEmail">
+          <DataField>RptLiteralsLEmail</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLFax">
+          <DataField>RptLiteralsLFax</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLNetAmount">
+          <DataField>RptLiteralsLNetAmount</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLNo">
+          <DataField>RptLiteralsLNo</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLPayment">
+          <DataField>RptLiteralsLPayment</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLSupplier">
+          <DataField>RptLiteralsLSupplier</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsRptTitleRemit">
+          <DataField>RptLiteralsRptTitleRemit</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsVendorBankAcctNumber">
+          <DataField>RptLiteralsVendorBankAcctNumber</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsPage">
+          <DataField>RptLiteralsPage</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="CheckingAccount_c">
+          <DataField>CheckingAccount_c</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="LegalNumber">
+          <DataField>LegalNumber</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Company">
+      <Query>
+        <DataSourceName>dsAPRemit</DataSourceName>
+        <CommandText>
+          ="SELECT T1.FaxNum,T1.PhoneNum,T1.Calc_AddressList,T1.Calc_PrintCompanyName
+          FROM Company_" + Parameters!TableGuid.Value + " T1"
+        </CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="FaxNum">
+          <DataField>FaxNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PhoneNum">
+          <DataField>PhoneNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_AddressList">
+          <DataField>Calc_AddressList</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_PrintCompanyName">
+          <DataField>Calc_PrintCompanyName</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>7.72in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>2.15in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle1">
+                          <ReportItems>
+                            <Textbox Name="lblPayment">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsLPayment.Value &amp; ":"</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.05in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.43in</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>5pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr1">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(0).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.25in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr2">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(1).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.43in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr3">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(2).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.61in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr4">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(3).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.79in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr5">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(4).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.97in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr6">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(5).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.15in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr7">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(6).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.33in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>7</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtBankAddr8">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorBankAddr.Value, "~")(7).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.51in</Top>
+                              <Left>0.47in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.12in</Width>
+                              <ZIndex>8</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Line Name="Line1">
+                              <Top>1.77in</Top>
+                              <Left>0.12in</Left>
+                              <Height>0in</Height>
+                              <Width>3.45in</Width>
+                              <ZIndex>9</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                  <Width>0.5pt</Width>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="lblBank">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsLBank.Value &amp; ":"</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.79in</Top>
+                              <Left>0.12in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.5in</Width>
+                              <ZIndex>10</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblBankAcctNumber">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsVendorBankAcctNumber.Value &amp; ":"</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.97in</Top>
+                              <Left>0.1in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.52in</Width>
+                              <ZIndex>11</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspVendorBankName">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_DspVendorBankName.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.79in</Top>
+                              <Left>1.65in</Left>
+                              <Height>0.18in</Height>
+                              <Width>2.15in</Width>
+                              <ZIndex>12</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspVendorBankAcctNumber">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_DspVendorBankAcctNumber.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.97in</Top>
+                              <Left>1.65in</Left>
+                              <Height>0.18in</Height>
+                              <Width>2.15in</Width>
+                              <ZIndex>13</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Line Name="Line2">
+                              <Top>0.1in</Top>
+                              <Left>3.85in</Left>
+                              <Height>2in</Height>
+                              <Width>0in</Width>
+                              <ZIndex>14</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="lblSupplier">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsLSupplier.Value &amp; ":"</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.05in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.3in</Width>
+                              <ZIndex>15</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>5pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr1">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(0).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.25in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>16</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr2">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(1).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.43in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>17</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr3">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(2).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.61in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>18</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr4">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(3).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.79in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>19</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr5">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(4).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.97in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>20</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr6">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(5).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.15in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>21</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr7">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(6).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.33in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>22</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorAddr8">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Split(Fields!Calc_DspVendorAddr.Value, "~")(7).ToString()</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.51in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>3.4in</Width>
+                              <ZIndex>23</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>14pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblFaxNum">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(isnothing(Fields!VendorNum_FaxNum.Value), "", Fields!RptLiteralsLFax.Value)</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.79in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.6in</Width>
+                              <ZIndex>24</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblEmail">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(isnothing(Fields!VendorNum_EMailAddress.Value), "", Fields!RptLiteralsLEmail.Value)</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.97in</Top>
+                              <Left>4.02in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.6in</Width>
+                              <ZIndex>25</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorNum_FaxNum">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!VendorNum_FaxNum.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.79in</Top>
+                              <Left>4.69in</Left>
+                              <Height>0.18in</Height>
+                              <Width>2.85in</Width>
+                              <ZIndex>26</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtVendorNum_EMailAddress">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!VendorNum_EMailAddress.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>1.97in</Top>
+                              <Left>4.69in</Left>
+                              <Height>0.18in</Height>
+                              <Width>2.85in</Width>
+                              <ZIndex>27</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>
+                                        =Code.SetLabels(  Fields!RptLiteralsPhoneNum.Value
+                                        , Fields!RptLiteralsFaxNum.Value
+                                        , Fields!RptLiteralsLNo.Value
+                                        , Fields!RptLiteralsLDate.Value
+                                        , Fields!RptLiteralsRptTitleRemit.Value
+                                        , Fields!RptLiteralsPage.Value)
+                                      </Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox1</rd:DefaultName>
+                              <Top>0.25in</Top>
+                              <Left>0.1in</Left>
+                              <Height>0.03042in</Height>
+                              <Width>0.21417in</Width>
+                              <ZIndex>28</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.295in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle4">
+                          <ReportItems>
+                            <Textbox Name="txtCurrencyCode_CurrDesc">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!CurrencyCode_CurrDesc.Value &amp; chr(160)</Value>
+                                      <Style>
+                                        <FontStyle>Italic</FontStyle>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.145in</Top>
+                              <Left>5.94in</Left>
+                              <Height>0.15in</Height>
+                              <Width>1.77in</Width>
+                              <Visibility>
+                                <Hidden>=iif(Fields!Calc_CurncyModule.Value = false, True, False)</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BottomBorder>
+                                  <Color>Silver</Color>
+                                  <Style>Dotted</Style>
+                                </BottomBorder>
+                                <PaddingLeft>1pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox3">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>EFT Payment From Drawn Account No:</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox3</rd:DefaultName>
+                              <Top>0.3175cm</Top>
+                              <Left>0.07056cm</Left>
+                              <Height>0.17in</Height>
+                              <Width>2.52458in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="CheckingAccount_c">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!CheckingAccount_c.Value)</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>CheckingAccount_c</rd:DefaultName>
+                              <Top>0.3175cm</Top>
+                              <Left>2.56625in</Left>
+                              <Height>0.17in</Height>
+                              <Width>1in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.33305in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle5">
+                          <ReportItems>
+                            <Textbox Name="lblInvDate">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsLDate1.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.07722in</Top>
+                              <Left>1.25in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.59in</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblDescription">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsDescription.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.07722in</Top>
+                              <Left>2.12in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.25in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblDocTranAmt">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsDocTranAmt.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.07722in</Top>
+                              <Left>3.67in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.07in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblDiscAmt">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsDiscAmt.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.07722in</Top>
+                              <Left>4.93in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.91in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="lblNetAmount">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RptLiteralsLNetAmount.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.07722in</Top>
+                              <Left>6.45in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.26in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Line Name="Line4">
+                              <Top>0.25722in</Top>
+                              <Height>0in</Height>
+                              <Width>7.72in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="Textbox4">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Reference No</Value>
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox4</rd:DefaultName>
+                              <Top>0.07722in</Top>
+                              <Height>0.15222in</Height>
+                              <Width>1.20833in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.18in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle6">
+                          <ReportItems>
+                            <Textbox Name="txtCurrencyCode_CurrSymbol">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!CurrencyCode_CurrSymbol.Value</Value>
+                                      <Style>
+                                        <FontStyle>Italic</FontStyle>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>7.33in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.38in</Width>
+                              <Visibility>
+                                <Hidden>=iif(Fields!Calc_CurncyModule.Value = false, True, False)</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>1pt</PaddingLeft>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspInvoiceDate">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(isnothing(Fields!Calc_DspInvoiceDate.Value), "", FormatDateTime(Fields!Calc_DspInvoiceDate.Value,2))</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>1.25in</Left>
+                              <Height>0.18in</Height>
+                              <Width>0.78in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDescription">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Description.Value</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>2.12in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.3in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDocTranAmt">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Format(CDbl(Fields!DocTranAmt.Value), "#,##0.00")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>3.43in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.32in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtDocDiscAmt">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Format(Fields!DocDiscAmt.Value, "#,##0.00")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>4.815in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.04in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspNetAmt">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Format(CDbl(Fields!Calc_DspNetAmt.Value), "#,##0.00")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>5.9in</Left>
+                              <Height>0.18in</Height>
+                              <Width>1.41in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspAccountRef1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_DspAccountRef.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>2.05in</Left>
+                              <Height>0.02in</Height>
+                              <Width>0.02in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspCheckNum1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_DspCheckNum.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.05in</Top>
+                              <Left>2.05in</Left>
+                              <Height>0.03292in</Height>
+                              <Width>0.01042in</Width>
+                              <ZIndex>7</ZIndex>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="txtCalc_DspCheckDate1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=FormatDateTime(Fields!Calc_DspCheckDate.Value,2)</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.1in</Top>
+                              <Left>2.05in</Left>
+                              <Height>0.03292in</Height>
+                              <Width>0.02in</Width>
+                              <ZIndex>8</ZIndex>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LegalNumber">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!LegalNumber.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>LegalNumber</rd:DefaultName>
+                              <Height>0.18in</Height>
+                              <Width>1.22222in</Width>
+                              <ZIndex>9</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.05208in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtCalc_DspDocCheckAmt1">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Calc_DspDocCheckAmt.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial Unicode MS</FontFamily>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border />
+                            <BackgroundColor>White</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Calc_DspCheckNum">
+                    <DocumentMapLabel>=Format(Fields!Calc_DspCheckNum.Value, "#########0")</DocumentMapLabel>
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Calc_DspCheckNum.Value</GroupExpression>
+                    </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>Between</BreakLocation>
+                    </PageBreak>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Calc_DspCheckNum.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="FakeGroup">
+                        <GroupExpressions>
+                          <GroupExpression>true</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>true</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember />
+                        <TablixMember />
+                      </TablixMembers>
+                    </TablixMember>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="Details" />
+                      <DataElementName>Detail_Collection</DataElementName>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixMember>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>CheckHed</DataSetName>
+            <Top>0.06778in</Top>
+            <Left>0.12in</Left>
+            <Height>3.01013in</Height>
+            <Width>7.72in</Width>
+            <Style />
+          </Tablix>
+        </ReportItems>
+        <Height>3.07791in</Height>
+        <Style />
+      </Body>
+      <Width>7.98292in</Width>
+      <Page>
+        <PageHeader>
+          <Height>2in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Rectangle Name="Rectangle0">
+              <ReportItems>
+                <Textbox Name="lblPhone">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Code.GetValue("RptLiteralsPhoneNum") &amp; ":"</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.0508cm</Top>
+                  <Left>5.3in</Left>
+                  <Height>0.18in</Height>
+                  <Width>1.03in</Width>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd1">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(0).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.0508cm</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd8">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(7).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>1.3in</Top>
+                  <Left>0.04in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.27723in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtPhoneNum">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!PhoneNum.Value, "Company")</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.0508cm</Top>
+                  <Left>6.37in</Left>
+                  <Height>0.18in</Height>
+                  <Width>1.34in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtFaxNum">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!FaxNum.Value, "Company")</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.2in</Top>
+                  <Left>6.37in</Left>
+                  <Height>0.18in</Height>
+                  <Width>1.34in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="lblFax">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Code.GetValue("RptLiteralsFaxNum")  &amp; ":"</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.2in</Top>
+                  <Left>5.3in</Left>
+                  <Height>0.18in</Height>
+                  <Width>1.03in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd4">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(3).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.56in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <ZIndex>6</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd3">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(2).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.38in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <ZIndex>7</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd2">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(1).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.2in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd7">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(6).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>1.12in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd6">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(5).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.94in</Top>
+                  <Height>0.18in</Height>
+                  <Width>2.31723in</Width>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCompAdd5">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Split(First(Fields!Calc_AddressList.Value, "Company"),"~")(4).ToString()</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.74in</Top>
+                  <Left>0.04in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.27723in</Width>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <BackgroundColor>White</BackgroundColor>
+                  </Style>
+                </Textbox>
+                <Image Name="Image1">
+                  <Source>Embedded</Source>
+                  <Value>Logo</Value>
+                  <Sizing>FitProportional</Sizing>
+                  <Left>3.30083in</Left>
+                  <Height>0.92in</Height>
+                  <Width>1.11458in</Width>
+                  <ZIndex>12</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
+                <Textbox Name="Textbox2">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>GOVERNMENT OF LESOTHO</Value>
+                          <Style>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox2</rd:DefaultName>
+                  <Top>0.87in</Top>
+                  <Left>2.81125in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.05875in</Width>
+                  <ZIndex>13</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <DataElementOutput>ContentsOnly</DataElementOutput>
+              <Height>1.48in</Height>
+              <Width>7.71in</Width>
+              <Style />
+            </Rectangle>
+            <Rectangle Name="Rectangle7">
+              <ReportItems>
+                <Textbox Name="txtCalc_DspAccountRef">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Reportitems!txtCalc_DspAccountRef1.Value</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.02in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>2.29723in</Width>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Textbox Name="lblRptLiteralsLNo">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Code.GetValue("RptLiteralsLNo")</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.33in</Top>
+                  <Left>0.02in</Left>
+                  <Height>0.18in</Height>
+                  <Width>0.37in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCalc_DspCheckNum">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Reportitems!txtCalc_DspCheckNum1.Value</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.33in</Top>
+                  <Left>0.47in</Left>
+                  <Height>0.18in</Height>
+                  <Width>0.86in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Rectangle Name="Rectangle8">
+                  <ReportItems>
+                    <Textbox Name="lblRptTitle">
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= Code.GetValue("RptLiteralsRptTitleRemit")</Value>
+                              <Style>
+                                <FontFamily>Arial Unicode MS</FontFamily>
+                                <FontSize>14pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Height>0.25in</Height>
+                      <Width>3.9in</Width>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                  <KeepTogether>true</KeepTogether>
+                  <Top>0.22639in</Top>
+                  <Left>1.97in</Left>
+                  <Height>0.285in</Height>
+                  <Width>3.9in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <BackgroundColor>Silver</BackgroundColor>
+                  </Style>
+                </Rectangle>
+                <Textbox Name="txtPageNum">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>="Page " &amp; Code.GetGroupPageNumber(Reportitems!txtCalc_DspCheckNum1.Value, Globals!PageNumber)</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.23in</Top>
+                  <Left>6.52in</Left>
+                  <Height>0.18in</Height>
+                  <Width>1.19in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Textbox Name="lblDate">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Code.GetValue("RptLiteralsLDate")</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.02in</Top>
+                  <Left>6.32in</Left>
+                  <Height>0.18in</Height>
+                  <Width>0.6in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Textbox Name="txtCalc_DspCheckDate">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Reportitems!txtCalc_DspCheckDate1.Value</Value>
+                          <Style>
+                            <FontFamily>Arial Unicode MS</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.02in</Top>
+                  <Left>6.92in</Left>
+                  <Height>0.18in</Height>
+                  <Width>0.79in</Width>
+                  <ZIndex>6</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>1.48in</Top>
+              <Height>0.52in</Height>
+              <Width>7.72667in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Rectangle>
+          </ReportItems>
+          <Style />
+        </PageHeader>
+        <PageFooter>
+          <Height>1.71866in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="txtFormsNumber">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="ApRemit" &amp; ":" &amp; "001" &amp; ":" &amp; "00"</Value>
+                      <Style>
+                        <FontFamily>Arial Unicode MS</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.06667in</Top>
+              <Left>0.12in</Left>
+              <Height>0.19in</Height>
+              <Width>1.1in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Silver</Color>
+                  <Style>Dotted</Style>
+                </TopBorder>
+                <BackgroundColor>White</BackgroundColor>
+              </Style>
+            </Textbox>
+            <Textbox Name="txtCalc_DspDocCheckAmt">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Format(CDbl(ReportItems!txtCalc_DspDocCheckAmt1.Value),"#,##0.00")</Value>
+                      <Style>
+                        <FontFamily>Arial Unicode MS</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Left>6.02in</Left>
+              <Height>0.18in</Height>
+              <Width>1.41in</Width>
+              <ZIndex>1</ZIndex>
+              <Visibility>
+                <Hidden>=iif(ReportItems!txtCalc_DspDocCheckAmt1.Value &gt; 0, False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+            <Line Name="Line6">
+              <Top>0.82534in</Top>
+              <Left>5.16583in</Left>
+              <Height>0in</Height>
+              <Width>1.28in</Width>
+              <ZIndex>2</ZIndex>
+              <Visibility>
+                <Hidden>=iif(ReportItems!txtCalc_DspDocCheckAmt1.Value &gt; 0, False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Textbox5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Date: </Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.65in</Top>
+              <Left>4.65021in</Left>
+              <Height>0.25in</Height>
+              <Width>0.42104in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox6">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Authorizing Officer Name: </Value>
+                      <Style>
+                        <FontFamily />
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.34445in</Top>
+              <Left>4.63021in</Left>
+              <Height>0.25in</Height>
+              <Width>1.85604in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox7">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Authorizing Officer Name: </Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>1.08142in</Top>
+              <Left>4.63979in</Left>
+              <Height>0.25in</Height>
+              <Width>1.85604in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox8">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Date: </Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>1.43742in</Top>
+              <Left>4.61896in</Left>
+              <Height>0.25in</Height>
+              <Width>0.42104in</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line7">
+              <Top>1.68742in</Top>
+              <Left>5.145in</Left>
+              <Height>0in</Height>
+              <Width>1.28in</Width>
+              <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=iif(ReportItems!txtCalc_DspDocCheckAmt1.Value &gt; 0, False, True)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+          </ReportItems>
+          <Style />
+        </PageFooter>
+        <InteractiveHeight>11in</InteractiveHeight>
+        <InteractiveWidth>8.5in</InteractiveWidth>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.2in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TableGuid">
+      <DataType>String</DataType>
+      <Prompt>TableGuid</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>TableGuid</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Code>
+    Private Shared _hashtable As New System.Collections.Hashtable()
+
+    Function SetValue(ByVal id as String, ByVal value As String) As Object
+    SyncLock _hashtable.SyncRoot
+    dim Key as String = id + Report.Parameters!TableGuid.Value
+    _hashtable(Key) = value
+    End SyncLock
+    End Function
+
+    Function GetValue(ByVal id as String) As Object
+    SyncLock _hashtable.SyncRoot
+    dim Key as String = id + Report.Parameters!TableGuid.Value
+    Return _hashtable(Key )
+    End SyncLock
+    End Function
+
+
+    Public Function GetGroupPageNumber (group as Object, pagenumber as Integer) as Object
+    If Not (group = GetValue("CurrentGroup"))
+    SetValue("Offset", pagenumber - 1)
+    SetValue("CurrentGroup", group)
+    End If
+    Return pagenumber - GetValue("Offset")
+    End Function
+
+    Public Function SetLabels(p_RptLiteralsPhoneNum as String, p_RptLiteralsFaxNum as String, p_RptLiteralsLNo as String, p_RptLiteralsLDate as String, p_RptLiteralsRptTitleRemit as String, p_RptLiteralsPage as String) as String
+    SetValue("RptLiteralsPhoneNum", p_RptLiteralsPhoneNum)
+    SetValue("RptLiteralsFaxNum", p_RptLiteralsFaxNum)
+    SetValue("RptLiteralsLNo", p_RptLiteralsLNo)
+    SetValue("RptLiteralsLDate", p_RptLiteralsLDate)
+    SetValue("RptLiteralsRptTitleRemit", p_RptLiteralsRptTitleRemit)
+    SetValue("RptLiteralsPage", p_RptLiteralsPage)
+    Return ""
+    End Function
+  </Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Logo">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>
+        /9j/4AAQSkZJRgABAQEAYABgAAD/4RDqRXhpZgAATU0AKgAAAAgABgMBAAUAAAABAAAIYlEQAAEAAAABAQAAAFERAAQAAAABAAAOxFESAAQAAAABAAAOxIdpAAQAAAABAAAIauocAAcAAAgMAAAAVgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhqAAALGPAAWQAwACAAAAFAAAELiQBAACAAAAFAAAEMySkQACAAAAAzAwAACSkgACAAAAAzAwAADqHAAHAAAIDAAACKwAAAAA
+        HOoAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMDE3OjAxOjA2IDE3OjMzOjUyADIwMTc6MDE6MDYgMTc6MzM6NTIAAAD/4QmcaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRw
+        Oi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+PHhtcDpDcmVhdGVEYXRlPjIwMTctMDEtMDZUMTc6MzM6NTI8L3htcDpDcmVhdGVEYXRlPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0ndyc/Pv/bAEMAAgEBAgEBAgICAgICAgIDBQMDAwMDBgQEAwUHBgcHBwYHBwgJCwkICAoIBwcKDQoKCwwMDAwHCQ4PDQwOCwwMDP/bAEMBAgICAwMDBgMDBgwIBwgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/AABEIAI8ArgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AP38ooooAKKKKACiiigAooooAKKKKAPyd+PX/BW/46eEP+Dizwr+zTpd54JtfhrJNYGWBtOIur60u7SKaYzTyT5FxHIGEIhjAYSAMCMsP1ir8Gf+
+        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
+      </ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>a500f51c-b6a2-4373-bb10-ed3b87662a30</rd:ReportID>
+</Report>
